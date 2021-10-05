@@ -1,6 +1,7 @@
 import React, { useState, useCallback } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useFocusEffect } from '@react-navigation/native';
+import { Alert } from 'react-native';
 
 import { Header } from '../../components/Header';
 import { SearchBar } from '../../components/SearchBar';
@@ -30,7 +31,18 @@ export function Home() {
 
   async function loadData() {
     const dataKey = '@savepass:logins';
-    // Get asyncStorage data, use setSearchListData and setData
+    try {
+      const data = await AsyncStorage.getItem(dataKey);
+      const parsedData = JSON.parse(data);
+
+      if(parsedData) {
+        setData(parsedData);
+        setSearchListData(parsedData);    
+      }
+    } catch(error) {
+      console.log(error);
+      Alert.alert('Houve um erro ao carregar dados.');
+    }
   }
 
   function handleFilterLoginData() {
