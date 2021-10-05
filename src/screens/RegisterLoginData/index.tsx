@@ -49,7 +49,16 @@ export function RegisterLoginData() {
 
     const dataKey = '@savepass:logins';
 
-    // Save data on AsyncStorage and navigate to 'Home' screen
+    try {
+      const data = await AsyncStorage.getItem(dataKey);
+      const parsedData = data ? JSON.parse(data) : [];
+      const formattedData = JSON.stringify([...parsedData, newLoginData]);
+      await AsyncStorage.setItem(dataKey, formattedData)
+      navigate('Home');
+    } catch (error) {
+      console.log(error);
+      Alert.alert('Houve um erro ao cadastrar dado.');
+    }
   }
 
   return (
