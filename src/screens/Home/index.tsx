@@ -41,7 +41,7 @@ export function Home() {
       }
     } catch(error) {
       console.log(error);
-      Alert.alert('Houve um erro ao carregar dados.');
+      Alert.alert('Houve um erro ao carregar senhas.');
     }
   }
 

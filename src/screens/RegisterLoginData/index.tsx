@@ -57,7 +57,7 @@ export function RegisterLoginData() {
       navigate('Home');
     } catch (error) {
       console.log(error);
-      Alert.alert('Houve um erro ao cadastrar dado.');
+      Alert.alert('Houve um erro ao cadastrar senhas.');
     }
   }
 
