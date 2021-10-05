@@ -38,7 +38,12 @@ export function Home() {
   }
 
   function handleChangeInputText(text: string) {
-    // Update searchText value
+    if(text.length === 0){
+      setSearchListData(data);
+      setSearchText('');
+    } else {
+      setSearchText(text);
+    }
   }
 
   useFocusEffect(useCallback(() => {
