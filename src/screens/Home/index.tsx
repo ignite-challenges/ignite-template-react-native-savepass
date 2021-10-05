@@ -46,7 +46,11 @@ export function Home() {
   }
 
   function handleFilterLoginData() {
-    // Filter results inside data, save with setSearchListData
+    if(searchText.length > 0){
+      const searchResult = data
+        .filter(item => item.service_name.includes(searchText));
+      setSearchListData(searchResult);
+    }
   }
 
   function handleChangeInputText(text: string) {
