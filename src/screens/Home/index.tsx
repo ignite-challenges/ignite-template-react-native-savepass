@@ -48,7 +48,7 @@ export function Home() {
   function handleFilterLoginData() {
     if(searchText.length > 0){
       const searchResult = data
-        .filter(item => item.service_name.includes(searchText));
+        .filter((item: LoginDataProps) => item.service_name.includes(searchText));
       setSearchListData(searchResult);
     }
   }
